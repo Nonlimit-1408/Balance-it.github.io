@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BALANCE IT! - Instruction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-backdrop"></div>
+    <div id="scale-wrapper">
+        <div class="app-container">
+            <img class="logo-small pop-in" src="../asset/logo.svg" alt="Balance It Logo">
+            <div class="page-wrapper pop-in" id="pageWrapper">
+
+                <div class="instruction-card">
+
+                    <h2 class="section-title" id="ui-story-title">เนื้อเรื่อง</h2>
+                    <p class="story-text" id="ui-story-text">
+                        เหลือเวลา 7 วันก่อนที่จะได้เงินค่าขนมก้อนใหม่<br>
+                        แต่ตอนนี้คุณเหลือเงินเพียง 2,000 บาท!!!<br>
+                        แถมเป็นสัปดาห์ที่เต็มไปด้วย Event มากมาย<br>
+                        ทั้งกดบัตรคอนเสิร์ต กินเลี้ยงสังสรรค์<br>
+                        ไหนจะงานและสอบที่กำลังจะมาถึงอีก...<br>
+                        ด้วยเงินแค่ 2,000 บาท คุณจะบริหารอย่างไร<br>
+                        ให้อยู่รอดไปได้ทั้งสัปดาห์?
+                    </p>
+
+                    <h2 class="section-title mt-3" id="ui-rules-title">วิธีการเล่น</h2>
+                    <ol class="rules-list">
+                        <li id="ui-rule-1">คุณจะต้องเอาชีวิตรอดให้ครบ 7
+                            วัน<br>โดยแต่ละวันจะมีเหตุการณ์ให้คุณเลือกตัดสินใจ</li>
+                        <li id="ui-rule-2">การตัดสินใจจะส่งผลต่อสถานะต่างๆ ได้แก่<br>💵 เงิน, 💪🏻 สุขภาพ, 🔥 แพสชัน และ
+                            🤝 สังคม</li>
+                        <li id="ui-rule-3">หากสถานะใดสถานะหนึ่งลดเหลือ 0%<br>ก่อนจะครบ 7 วัน คุณจะแพ้ทันที</li>
+                        <li id="ui-rule-4">ยกเว้นเงิน
+                            หากเงินติดลบและยังไม่ได้ใช้โควตาการโทรหาครอบครัว<br>ระบบจะบังคับให้คุณโทรหาครอบครัว</li>
+                        <li id="ui-rule-5">เมื่อจบเกม ระบบจะสรุปผลและวิเคราะห์<br>พฤติกรรมการเปย์ว่าคุณคือ "สาย" ไหน
+                        </li>
+                    </ol>
+
+                    <div class="notes-text">
+                        <p id="ui-note-1"><span>*เหตุการณ์พิเศษ :</span> ในบางวันอาจมีเหตุการณ์พิเศษ
+                            <br>ที่เกิดขึ้นส่งผลต่อสถานะต่างๆ
+                            โดยอัตโนมัติ
+                        </p>
+                        <p id="ui-note-2"><span>**ความช่วยเหลือโดยด่วน :</span> หากเงินเหลือเพียง 500
+                            หรือต่ำกว่านั้น<br>จะสามารถโทรศัพท์
+                            เพื่อขอเงินจากครอบครัวได้ 1 ครั้ง แต่ต้องลุ้นว่าจะได้เงินหรือไม่</p>
+                    </div>
+
+                    <h3 class="ready-text" id="ui-ready-text">เมื่อเข้าใจแล้วก็ไปเล่นกันเลย</h3>
+                </div>
+
+                <div class="btn-container">
+                    <button id="startGameBtn" class="btn">เริ่มเกม</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="lang.js"></script>
+    <script src="../settings.js"></script>
+    <script src="../sound-bridge.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

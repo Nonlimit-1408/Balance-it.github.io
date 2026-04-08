@@ -1,0 +1,599 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap');
+
+/* =========================================
+   1. โครงสร้างพื้นฐาน
+========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0b0c10;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.show-scene {
+    opacity: 1; 
+}
+
+#game-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0a004d;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    animation: moveDots 4s linear infinite;
+    z-index: -1;
+}
+
+#scale-wrapper {
+    width: 430px;
+    height: 900px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    transform: translate(-51%, -50%);
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #1800ad;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    animation: moveDots 4s linear infinite;
+    border: 4px solid #ffde59;
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+
+    /* ✨ ใส่ Flexbox จัดตรงกลางให้กล่อง .page-wrapper ไม่ลอยเทไปซ้าย */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@keyframes moveDots {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 20px 20px;
+    }
+}
+
+.page-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* =========================================
+   2. UI หน้าสรุปผล
+========================================= */
+/* โลโก้ */
+.logo-small {
+    display: block;
+    width: 45%;
+    margin: -25px auto 15px auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* การ์ดสีเทา */
+.summary-card {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 90%;
+    height: 72%;
+    background-color: #E8E8E8;
+    border: 10px solid #fff;
+    border-radius: 50%;
+    /* สีเทาอ่อนตามภาพ */
+    border-radius: 12px;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 12px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* เส้นคั่น */
+hr.divider {
+    border: 0;
+    border-top: 2px solid #000000;
+    margin: 12px 0;
+}
+
+/* --- Section 1: โปรไฟล์ --- */
+.profile-section {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.profile-img-placeholder {
+    width: 100px;
+    height: 130px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.profile-text {
+    flex: 1;
+    text-align: center;
+}
+
+.profile-text h2 {
+    font-family: 'Mitr', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.profile-text h1 {
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #000;
+    margin: -5px 0 0 0;
+}
+
+.profile-text p {
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.2;
+}
+
+/* --- Section 2: สถานะ --- */
+.status-section h3 {
+    font-family: 'Mitr', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+    margin-top: -10px;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* แบ่งครึ่งหน้ากระดาษเป๊ะๆ */
+    gap: 8px 15px;
+    /* ระยะห่างระหว่างคอลัมน์และแถว */
+    width: 100%;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    /* ระยะไอคอนกับหลอด */
+    width: 100%;
+}
+
+.stat-value {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* ✨ จัดให้อยู่กึ่งกลางเป๊ะ */
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    /* ใช้ความหนาปกติเพื่อให้เนี้ยบที่สุด */
+    color: #000000;
+    /* ✨ เปลี่ยนเป็นสีดำเพื่อความคมชัดสูงสุด */
+    z-index: 5;
+
+    /* ✨ เพิ่มเงาสีขาวบางๆ ด้านหลังเพื่อให้ตัวหนังสือเด้งออกมาและดูมีมิติ */
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.icon-circle {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.icon-small {
+    width: 15px;
+    height: 15px;
+}
+
+.bar-bg {
+    flex: 1;
+    /* ✨ หัวใจสำคัญ: บังคับให้หลอดกินพื้นที่ที่เหลือทั้งหมด ทำให้สองฝั่งยาวเท่ากัน */
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: visible;
+    /* ให้ตัวเลขโชว์ได้ชัดเจน */
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    width: 50%;
+    /* ค่าเริ่มต้น */
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+}
+
+/* สีหลอดตามดีไซน์ */
+.money-fill {
+    background-color: #548235;
+}
+
+.passion-fill {
+    background-color: #FF5E00;
+}
+
+.energy-fill {
+    background-color: #C00000;
+}
+
+.social-fill {
+    background-color: #4400FF;
+}
+
+/* --- Section 3: เหตุการณ์ --- */
+.event-section {
+    flex: 1;
+    /* ดันให้เต็มพื้นที่ที่เหลือ */
+}
+
+.event-section h3 {
+    font-family: 'Mitr', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+    margin-top: -6px;
+}
+
+.event-list {
+    list-style-type: none;
+    padding-left: 5px;
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.42rem;
+    color: #000;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   3. ปุ่มบันทึกผล และ หน้าหลัก
+========================================= */
+.btn-container {
+    position: absolute;
+    bottom: 4%;
+    /* ดันให้อยู่ด้านล่างสุดของการ์ด/หน้าจอ */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    /* ✨ นี่คือหัวใจสำคัญ! เว้นระยะห่างซ้าย-ขวา 15px */
+    z-index: 10;
+}
+
+.btn {
+    font-family: "Mitr", sans-serif;
+    font-weight: 500;
+    background-color: #ffde59;
+    color: #ffffff;
+    border: 6px solid #ffcc53;
+    /* ลดความหนากรอบลงนิดนึงไม่ให้ปุ่มเทอะทะ */
+    border-radius: 18px;
+    padding: 5px 10px;
+    /* ปรับขนาดพื้นที่ในปุ่มให้พอดีสำหรับ 2 ปุ่ม */
+    font-size: 1.3rem;
+    /* ปรับขนาดฟอนต์ให้พอดี ไม่ใหญ่เกินไป */
+    cursor: pointer;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease;
+    white-space: nowrap;
+    /* ป้องกันไม่ให้คำตัดขึ้นบรรทัดใหม่ */
+}
+
+.btn:active {
+    transform: scale(0.96);
+    filter: brightness(0.95);
+}
+
+/* แอนิเมชัน */
+.pop-in {
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+        filter: blur(5px);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.play-timestamp {
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.6rem;
+    /* ขนาดเล็กตามมึงต้องการ */
+    color: #000000;
+    text-align: center;
+    /* จัดให้อยู่กลางล่างของการ์ด */
+    margin-top: 10px;
+    /* เว้นระยะห่างจากรายการอีเวนต์นิดนึง */
+    opacity: 0.6;
+    /* ทำให้ดูจางๆ นิดหน่อยจะได้ไม่แย่งซีน */
+}
+
+.sub-event {
+    display: block;
+    padding-left: 15px;
+    /* ✨ ระยะเยื้องเข้าไปทางขวา */
+    margin-top: 2px;
+    /* ระยะห่างบรรทัดนิดหน่อย */
+    font-size: 0.40rem;
+    /* ย่อขนาดลงนิดนึงเพื่อให้ดูเป็นหัวข้อย่อย */
+    color: #000000;
+    /* ปรับสีให้เทาลงนิดนึงเพื่อแยกความสำคัญ */
+}
+
+/* =========================================
+   MBTI Text Styling
+========================================= */
+#mbti-nickname {
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000000;
+    /* สีเหลืองทองให้ดูเด่น */
+    margin-top: -6px;
+    margin-bottom: 2px;
+}
+
+.mbti-meaning {
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 400;
+    color: #e0e0e0;
+    margin-bottom: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+#mbti-desc {
+    white-space: pre-line;
+    /* บรรทัดนี้สำคัญที่สุด เพื่อให้ขึ้นบรรทัดใหม่ตาม \n */
+    line-height: 0.7rem;
+    /* ปรับระยะห่างบรรทัดให้อ่านง่ายขึ้น */
+    margin-top: -3px;
+    /* เว้นระยะจากหัวข้อข้างบนนิดนึง */
+    font-family: 'Prompt', sans-serif;
+    /* ใช้ฟอนต์เดียวกับส่วนอื่น */
+    font-size: 0.4rem;
+    /* ปรับขนาดให้พอดีการ์ด */
+    transform: scale(1.1);
+}
+
+.watermark-logo {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    width: 250px;
+    /* ปรับขนาดลายน้ำ */
+    transform: translate(-50%, -50%) rotate(-20deg);
+    opacity: 0.06;
+    /* ให้จางๆ */
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* =========================================
+   Stamp (ตราประทับผลลัพธ์)
+========================================= */
+.result-stamp {
+    position: absolute;
+    bottom: 20px;
+    /* ระยะห่างจากขอบบน */
+    right: 15px;
+    /* ระยะห่างจากขอบขวา */
+    width: 100px;
+    /* ขนาดแสตมป์ ปรับให้ใหญ่/เล็กได้ตามชอบ */
+    transform: rotate(-15deg);
+    /* เอียงนิดๆ ให้ดูเรียล */
+    transform: translate(12.5%, 20.8%);
+    opacity: 0.95;
+    /* โปร่งแสงนิดนึงให้ดูเนียนกริบ */
+    z-index: 10;
+    /* ให้อยู่เลเยอร์บนสุด ทับข้อความได้ */
+    pointer-events: none;
+    /* เพื่อไม่ให้ขวางเวลาคนคลิกอะไรบนจอ */
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+    /* เงาบางๆ ให้แสตมป์ดูลอยขึ้นมา */
+}
+
+/* =========================================
+   ปรับสเกลฟอนต์เฉพาะภาษาอังกฤษ (ลดปัญหาล้นบรรทัด)
+========================================= */
+
+/* =========================================
+   Stamp (ตรายางแบบ Base64 + รองพื้นขาว)
+========================================= */
+.stamp-container {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    width: 80px;
+    /* ปรับขนาดให้เล็กลงนิดนึงเพื่อไม่บัง Text */
+    height: 80px;
+    transform: rotate(-15deg);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ✨ พื้นหลังวงกลมสีขาว */
+.stamp-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    /* สีขาวรองพื้นเพื่อให้เซฟรูปแล้วเห็นชัด */
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.result-stamp {
+    width: 90%;
+    /* ให้รูปแสตมป์เล็กกว่าวงกลมขาวนิดนึง */
+    height: auto;
+}
+
+/* =========================================
+   ปรับสเกลฟอนต์ภาษาอังกฤษ (English Mode)
+========================================= */
+body.lang-en .event-list li {
+    font-size: 0.35rem;
+    /* ลดขนาดลงเพื่อให้ไม่ล้นบรรทัด */
+    line-height: 1.15;
+}
+
+body.lang-en .sub-event {
+    font-size: 0.35rem;
+}
+
+body.lang-en #play-timestamp {
+    font-size: 0.55rem;
+}
+
+/* =========================================
+   ✨ จัดการรูปตัวละครในช่อง Profile หน้าสรุปผล
+========================================= */
+.profile-img-placeholder {
+    position: relative;
+    overflow: hidden;
+    /* บังคับตัดส่วนที่ล้นกรอบทิ้ง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#summary-avatar {
+    width: 100%;
+    height: 100%;
+    object-position: center 10%;
+    display: block;
+    border: 5px #B2BEB5 solid;
+}
+
+.mbti-letters-explain {
+    font-size: 0.85rem;
+    color: #6b7280;
+    /* สีเทาตุ่นๆ */
+    margin-top: -20px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-family: 'Prompt', sans-serif;
+}
+
+.camera-flash-overlay {
+    position: fixed !important;
+    /* คลุมทั้งหน้าต่างโดยไม่สน wrapper */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: white !important;
+    z-index: 9999999 !important;
+    /* อยู่เหนือทุกสิ่ง */
+    opacity: 1;
+    /* เริ่มที่ขาวสนิท */
+    display: none;
+    /* ซ่อนไว้ก่อน */
+    transition: opacity 0.5s ease-out;
+    /* เวลาเฟดกลับมา */
+}
+
+/* คลาสสั่งให้โชว์ */
+.camera-flash-overlay.show-flash {
+    display: block;
+}
+
+/* คลาสสั่งให้เฟดกลับมา */
+.camera-flash-overlay.fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out !important;
+}
+
+/* คลาสสั่งให้ซ่อนสนิทหลังเฟด */
+.camera-flash-overlay.hidden {
+    display: none !important;
+}
+
+@keyframes fadeCardIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.camera-flash-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: white !important;
+    z-index: 9999999 !important;
+    opacity: 1;
+    display: none;
+    transition: opacity 5s ease-out;
+}
+
+.camera-flash-overlay.show-flash {
+    display: block;
+}
+
+.camera-flash-overlay.fade-out {
+    transition: opacity 0.6s ease-in-out !important;
+    opacity: 0;
+}
+
+.camera-flash-overlay.hidden {
+    display: none !important;
+}

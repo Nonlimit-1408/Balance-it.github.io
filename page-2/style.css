@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* =========================================
+   1. โครงสร้างพื้นฐาน (Reset & Background)
+========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0b0c10;
+    width: 100%;
+    height: 100%;
+}
+
+/* 2. ฉากหลังจุดขยับ (แผ่เต็มจอ) */
+#game-backdrop {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    
+    /* ฉากหลังจุดๆ ดึงมาแผ่เต็มจอนี้ */
+    background-color: #0a004d; /* ทำให้สีฉากหลังเข้มกว่าสีในกรอบเกมเล็กน้อย จะได้ดูมีมิติ */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    animation: moveDots 4s linear infinite;
+    z-index: -1;
+}
+
+#scale-wrapper {
+    width: 430px;  
+    height: 900px; 
+    position: absolute;
+    top: 50%; left: 50%;
+    transform-origin: center center;
+    transform: translate(-51%, -50%);
+    opacity: 0;
+    animation: fadeCardIn 0.3s ease forwards;
+    animation-delay: 0.05s;
+}
+
+.app-container {
+    width: 100%;
+    height: 100%; 
+    margin: 0 auto;
+    position: relative;
+    /* 🛑 ลบ overflow: hidden; ออกเช่นกัน */
+
+    background-color: #1800ad; 
+    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    animation: moveDots 4s linear infinite;
+    
+    /* 🎨 แต่งหน้าตาให้เป็นกรอบมือถือ/การ์ดเกม */
+    background-color: #1800ad; /* สีพื้นหลังของเกมมึง */
+    border: 4px solid #ffde59; /* ใส่ขอบสีเหลืองธีม Balance It ให้ดูมีขอบเขต */
+    border-radius: 40px;       /* ทำมุมโค้งมนเหมือนขอบมือถือ */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* ใส่เงาดำหนักๆ ให้กรอบดูลอยขึ้นมาจากฉากหลัง */
+    overflow: hidden;
+}
+
+@keyframes moveDots {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 20px 20px;
+    }
+}
+
+/* =========================================
+   2. Transition ขาเข้า (Pop In)
+========================================= */
+.page-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-in {
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* =========================================
+   3. องค์ประกอบหน้า 2 (Instruction)
+========================================= */
+
+/* โลโก้ด้านบน (คงขนาดและตำแหน่งเดิมเป๊ะ!) */
+.logo-small {
+    display: block;
+    width: 45%;
+    margin: -25px auto 15px auto;
+}
+
+/* การ์ดเนื้อหา (สีขาว) - ขยายกว้างขึ้น และเอา Scroll ออก */
+.instruction-card {
+    background-color: #ffffff;
+    width: 80%;
+    /* ขยายพื้นที่ด้านข้าง */
+    height: 70%;
+    margin: -40px auto 0;
+    border-radius: 15px;
+    padding: 15px 15px;
+    /* ลดกรอบด้านในให้เนื้อหาไม่อึดอัด */
+    color: #000000;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* หัวข้อ (เนื้อเรื่อง / วิธีการเล่น) - ใช้ Mitr */
+.section-title {
+    font-family: "Mitr", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.mt-3 {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+/* เนื้อเรื่อง - ใช้ Prompt */
+.story-text {
+    font-family: "Prompt", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* ลิสต์วิธีการเล่น - ใช้ Prompt */
+.rules-list {
+    font-family: "Prompt", sans-serif;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #333;
+    padding-left: 20px;
+    margin-bottom: -20px;
+}
+
+.rules-list li {
+    margin-bottom: 5px;
+}
+
+/* หมายเหตุ (* / **) - ใช้ Prompt */
+.notes-text {
+    font-family: "Prompt", sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    text-align: left;
+    color: #555;
+    line-height: 1.3;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.notes-text span {
+    font-weight: 500;
+    color: #000;
+}
+
+/* ข้อความก่อนปุ่ม - ใช้ Mitr */
+.ready-text {
+    font-family: "Mitr", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 15%;
+}
+
+/* =========================================
+   4. ปุ่มเริ่มเกม (สไตล์เดียวกับหน้าแรกเป๊ะ!)
+========================================= */
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    /* ดึงปุ่มให้ชิดการ์ดขึ้นนิดนึงเพื่อให้อยู่ในจอพอดี */
+}
+
+.btn {
+    font-family: "Mitr", sans-serif;
+    font-weight: 500;
+    background-color: #ffde59;
+    color: #ffffff;
+    border: 10px solid #ffcc53;
+    border-radius: 18px;
+    padding: 0.25px 30px;
+    margin-top: 10px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.96);
+    filter: brightness(0.95);
+}
+
+/* =========================================
+   5. ท่าออก (Pop Out) สำหรับเปลี่ยนหน้า
+========================================= */
+.pop-out {
+    animation: popOut 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
+}
+
+@keyframes popOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    100% {
+        transform: scale(0.8);
+        /* หดตัวลง */
+        opacity: 0;
+        filter: blur(15px);
+        /* เบลอหายไป */
+    }
+}
+
+/* =========================================
+   6. ลูกเล่นตัวหนังสือเด้งเรียงลำดับ (Staggered Pop In) จบใน 1.5 วิ
+========================================= */
+
+/* 1. ซ่อนเนื้อหาทั้งหมดไว้ก่อน และเตรียมท่าเด้ง (textPopIn) */
+.section-title,
+.story-text,
+.rules-list,
+.notes-text,
+.ready-text,
+.btn-container {
+    opacity: 0;
+    /* ซ่อนไว้ก่อน */
+    /* ใช้เวลาเด้ง 0.5 วินาที */
+    animation: textPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes textPopIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 2. จัดคิวการปรากฏตัว (รันไปจนครบ 1.5 วินาทีพอดีเป๊ะ) */
+
+/* คิวที่ 1: หัวข้อ "เนื้อเรื่อง" (เริ่มเด้งตอน 0.2s ตอนที่กล่องขาวกำลังโผล่มา) */
+.instruction-card .section-title:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+
+/* คิวที่ 2: เนื้อหา "เนื้อเรื่อง" */
+.story-text {
+    animation-delay: 0.35s;
+}
+
+/* คิวที่ 3: หัวข้อ "วิธีการเล่น" */
+.instruction-card .section-title.mt-3 {
+    animation-delay: 0.5s;
+}
+
+/* คิวที่ 4: เนื้อหา "วิธีการเล่น" */
+.rules-list {
+    animation-delay: 0.65s;
+}
+
+/* คิวที่ 5: หมายเหตุ */
+.notes-text {
+    animation-delay: 0.8s;
+}
+
+/* คิวที่ 6: ข้อความเตรียมพร้อม */
+.ready-text {
+    animation-delay: 0.9s;
+}
+
+/* คิวที่ 7: ปุ่มเริ่มเกม (เริ่มตอน 1.0s + เวลาเด้งอีก 0.5s = จบที่ 1.5s พอดี!) */
+.btn-container {
+    animation-delay: 1.0s;
+}
+
+/* =========================================
+   7. ท่าออกตัวหนังสือ (Staggered Pop Out) แบบ 1.5 วิ
+========================================= */
+.text-pop-out {
+    /* ใช้เวลา 0.5s เท่าขาเข้า เพื่อความนุ่มนวล */
+    animation: textPopOut 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
+}
+
+@keyframes textPopOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.95);
+    }
+}
+
+/* --- จัดคิวขาออก (เรียงย้อนกลับจากล่างขึ้นบน ห่างกันจังหวะละ 0.15s) --- */
+.btn-container.text-pop-out {
+    animation-delay: 0s;
+}
+
+.ready-text.text-pop-out {
+    animation-delay: 0.15s;
+}
+
+.notes-text.text-pop-out {
+    animation-delay: 0.3s;
+}
+
+.rules-list.text-pop-out {
+    animation-delay: 0.45s;
+}
+
+.instruction-card .section-title.mt-3.text-pop-out {
+    animation-delay: 0.6s;
+}
+
+.story-text.text-pop-out {
+    animation-delay: 0.75s;
+}
+
+.instruction-card .section-title:nth-of-type(1).text-pop-out {
+    animation-delay: 0.9s;
+}
+
+@keyframes fadeCardIn {
+    to { opacity: 1; }
+}

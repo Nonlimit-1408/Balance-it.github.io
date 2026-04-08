@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BALANCE IT!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🛑 ห้ามจอมือถือเด้งเลื่อนไปมา (touch-action: none) */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; min-height: -webkit-fill-available; overflow: hidden; background-color: #000; touch-action: none; }
+        iframe { width: 100%; height: 100%; border: none; display: block; }
+        
+        /* =========================================
+           📱 ระบบหน้าจอแจ้งเตือน Rotate Device
+           ========================================= */
+        #rotate-overlay {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #111; color: #fff; z-index: 9999999;
+            flex-direction: column; justify-content: center; align-items: center;
+            font-family: 'Mitr', sans-serif; text-align: center;
+        }
+        
+        /* วาดไอคอนมือถือด้วย CSS ล้วนๆ ไม่ต้องพึ่งรูป */
+        .rotate-icon {
+            width: 60px; height: 100px;
+            border: 4px solid #fff; border-radius: 10px;
+            margin-bottom: 25px;
+            position: relative;
+            animation: rotatePhone 2s ease-in-out infinite;
+        }
+        .rotate-icon::after {
+            content: ''; position: absolute;
+            bottom: 6px; left: 50%; transform: translateX(-50%);
+            width: 20px; height: 4px; background: #fff; border-radius: 2px;
+        }
+        
+        /* แอนิเมชันหมุนมือถือ */
+        @keyframes rotatePhone {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(-90deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        /* 🟢 ดักจับว่า: ถ้าเป็นจอมือถือ/แท็บเล็ต (ความสูงน้อยกว่า 600px) แล้วกำลังตะแคงจออยู่ ให้โชว์หน้าดำ! */
+        @media screen and (orientation: landscape) and (max-height: 600px) {
+            #rotate-overlay { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="rotate-overlay">
+        <div class="rotate-icon"></div>
+        <h2 style="margin: 0 0 10px 0; font-size: 1.5rem; color: #FCE34D;">กรุณาหมุนจอเป็นแนวตั้ง</h2>
+        <p style="margin: 0; font-size: 1rem; color: #ccc;">Please rotate your device to portrait.</p>
+    </div>
+
+    <script src="sound.js"></script>
+    <iframe src="page-0/index.html" id="gameFrame" allow="autoplay"></iframe>
+
+</body>
+</html>
