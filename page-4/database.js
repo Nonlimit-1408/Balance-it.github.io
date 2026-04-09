@@ -28,8 +28,8 @@ const EVENT_DB_TH = {
             impact2: { money: [0, 0], passion: [-20, -30], energy: [5, 10], social: [0, 0] }
         },
         {
-            desc: "กระเป๋าผ้าแบรนด์ฮิตที่เด็กมหาลัยเขาใช้กัน\nของมันต้องมีสักใบ จะได้ดูไม่เด๋อ\nกดสั่งตอนนี้เลยไหม ราคาแอบแรงแต่เท่ชัวร์",
-            eventSummary: "เจอกระเป๋าผ้าแบรนด์ฮิตที่เด็กมหาลัยใช้กัน",
+            desc: "กระเป๋าแบรนด์ฮิตที่เด็กมหาลัยเขาใช้กัน\nของมันต้องมีสักใบ จะได้ดูไม่เด๋อ\nกดสั่งตอนนี้เลยไหม ราคาแอบแรงแต่เท่ชัวร์",
+            eventSummary: "เจอกระเป๋าแบรนด์ฮิตที่เด็กมหาลัยใช้กัน",
             btn1: "สั่งเลย", btn2: "ใช้เป้เก่า",
             shortChoice1: "ซื้อกระเป๋า", shortChoice2: "ใช้เป้เก่า",
             impact1: { money: [-600, -900], passion: [15, 25], energy: [-5, -10], social: [15, 20] },
@@ -40,7 +40,7 @@ const EVENT_DB_TH = {
             eventSummary: "ครีเอเตอร์คนโปรดออกสติกเกอร์ไลน์ใหม่",
             btn1: "กดซื้อ", btn2: "ใช้ของฟรี",
             shortChoice1: "เปย์สติกเกอร์", shortChoice2: "ใช้ของฟรี",
-            impact1: { money: [-100, -200], passion: [10, 15], energy: [0, 0], social: [10, 15] },
+            impact1: { money: [-50, -100], passion: [10, 15], energy: [0, 0], social: [10, 15] },
             impact2: { money: [0, 0], passion: [-10, -15], energy: [0, 0], social: [-10, -15] }
         }
     ],
@@ -51,7 +51,7 @@ const EVENT_DB_TH = {
             eventSummary: "เพื่อนชวนไปกินหมูกระทะฉลองวันเกิด",
             btn1: "ไปดิ", btn2: "กูช็อต",
             shortChoice1: "ไปตี้วันเกิด", shortChoice2: "อ้างช็อต",
-            impact1: { money: [-400, -500], passion: [10, 20], energy: [-15, -20], social: [25, 35] },
+            impact1: { money: [-200, -500], passion: [10, 20], energy: [-15, -20], social: [25, 35] },
             impact2: { money: [0, 0], passion: [-10, -15], energy: [10, 15], social: [-30, -40] }
         },
         {
@@ -180,7 +180,7 @@ const EVENT_DB_TH = {
             eventSummary: "นิ้วก้อยเท้าฟาดขอบเตียงเลือดซิบ",
             btn1: "ซื้อยา", btn2: "ทนเจ็บ",
             shortChoice1: "ซื้อยาทำแผล", shortChoice2: "ทนเจ็บเอา",
-            impact1: { money: [-150, -250], passion: [-10, -20], energy: [0, 5], social: [0, 0] },
+            impact1: { money: [-50, -150], passion: [-10, -20], energy: [0, 5], social: [0, 0] },
             impact2: { money: [0, 0], passion: [-30, -40], energy: [-25, -35], social: [0, 0] }
         },
         {
@@ -334,8 +334,8 @@ const EVENT_DB_EN = {
             impact2: { money: [0, 0], passion: [-20, -30], energy: [5, 10], social: [0, 0] }
         },
         {
-            desc: "A trendy tote bag every college student uses.\nYou kinda need one so you fit right in.\nShould you order it now despite the price?",
-            eventSummary: "Saw a trendy tote bag every college student uses",
+            desc: "A trendy bag every college student uses.\nYou kinda need one so you fit right in.\nShould you order it now despite the price?",
+            eventSummary: "Saw a trendy bag every college student uses",
             btn1: "Order now", btn2: "Use backpack",
             shortChoice1: "Bought bag", shortChoice2: "Used backpack",
             impact1: { money: [-600, -900], passion: [15, 25], energy: [-5, -10], social: [15, 20] },
@@ -346,7 +346,7 @@ const EVENT_DB_EN = {
             eventSummary: "Favorite creator released new LINE stickers",
             btn1: "Buy stickers", btn2: "Use free",
             shortChoice1: "Bought stickers", shortChoice2: "Used free ones",
-            impact1: { money: [-100, -200], passion: [10, 15], energy: [0, 0], social: [10, 15] },
+            impact1: { money: [-50, -100], passion: [10, 15], energy: [0, 0], social: [10, 15] },
             impact2: { money: [0, 0], passion: [-10, -15], energy: [0, 0], social: [-10, -15] }
         }
     ],
@@ -486,7 +486,7 @@ const EVENT_DB_EN = {
             eventSummary: "Stubbed your toe on the bed and it's bleeding",
             btn1: "Buy medicine", btn2: "Endure it",
             shortChoice1: "Bought medicine", shortChoice2: "Endured pain",
-            impact1: { money: [-150, -250], passion: [-10, -20], energy: [0, 5], social: [0, 0] },
+            impact1: { money: [-50, -150], passion: [-10, -20], energy: [0, 5], social: [0, 0] },
             impact2: { money: [0, 0], passion: [-30, -40], energy: [-25, -35], social: [0, 0] }
         },
         {
@@ -744,42 +744,42 @@ const SPECIAL_DB_EN = [
 // ==========================================
 const FAMILY_CALL_DB_TH = {
     "แม่": [
-        { mood: "อารมณ์ดี", text: "'กินข้าวยังลูก? ขาดเหลืออะไรไหม\nเดี๋ยวแม่โอนค่าขนมไปให้เพิ่มนะ'", shortDesc: "แม่โอนเงินให้", stats: { money: [1200, 2000], passion: [10, 20], energy: [5, 10], social: [0, 0] } },
+        { mood: "อารมณ์ดี", text: "'กินข้าวยังลูก? ขาดเหลืออะไรไหม\nเดี๋ยวแม่โอนค่าขนมไปให้เพิ่มนะ'", shortDesc: "แม่โอนเงินให้", stats: { money: [1500, 2000], passion: [10, 20], energy: [5, 10], social: [0, 0] } },
         { mood: "เป็นห่วง", text: "'เงินหมดแล้วเหรอ? ตั้งใจเรียนนะลูก\nอะแม่โอนให้แล้วนะ อย่าเที่ยวเยอะล่ะ'", shortDesc: "แม่บ่นแต่โอนให้", stats: { money: [800, 1500], passion: [5, 10], energy: [0, 5], social: [0, 0] } },
-        { mood: "บ่นแต่ให้", text: "'ใช้เงินเปลืองจังเลยเราน่ะ!\nอะ โอนให้แค่นี้นะ หัดประหยัดๆ หน่อย!'", shortDesc: "แม่สวดยับแต่โอน", stats: { money: [500, 1000], passion: [-15, -10], energy: [0, 0], social: [0, 0] } },
+        { mood: "บ่นแต่ให้", text: "'ใช้เงินเปลืองจังเลยเราน่ะ!\nอะ โอนให้แค่นี้นะ หัดประหยัดๆ หน่อย!'", shortDesc: "แม่สวดยับแต่โอน", stats: { money: [500, 800], passion: [-15, -10], energy: [0, 0], social: [0, 0] } },
         { mood: "ช็อตเหมือนกัน", text: "'โอ๊ย แม่ก็หมุนไม่ทันเหมือนกันเดือนนี้\nทนๆ กินมาม่าไปก่อนนะลูกนะ'", shortDesc: "แม่ช็อต", stats: { money: [0, 0], passion: [-20, -10], energy: [-10, -5], social: [0, 0] } }
     ],
     "พ่อ": [
-        { mood: "สปอยล์", text: "'ฮัลโหลลูก พ่อแอบโอนให้ละนะ\nอย่าไปบอกแม่เขาล่ะเดี๋ยวพ่อโดนด่า ฮ่าๆ'", shortDesc: "พ่อแอบโอนเงิน", stats: { money: [1500, 2000], passion: [15, 25], energy: [0, 0], social: [5, 10] } },
-        { mood: "อารมณ์ดี", text: "'เป็นไงบ้างลูก อะเอาค่าขนมไปกินนะ\nเลิกเรียนแล้วรีบกลับหอล่ะ'", shortDesc: "พ่อให้ค่าขนม", stats: { money: [1000, 1500], passion: [5, 15], energy: [5, 10], social: [0, 0] } },
+        { mood: "สปอยล์", text: "'ฮัลโหลลูก พ่อแอบโอนให้ละนะ\nอย่าไปบอกแม่เขาล่ะเดี๋ยวพ่อโดนด่า ฮ่าๆ'", shortDesc: "พ่อแอบโอนเงิน", stats: { money: [1000, 2000], passion: [15, 25], energy: [0, 0], social: [5, 10] } },
+        { mood: "อารมณ์ดี", text: "'เป็นไงบ้างลูก อะเอาค่าขนมไปกินนะ\nเลิกเรียนแล้วรีบกลับหอล่ะ'", shortDesc: "พ่อให้ค่าขนม", stats: { money: [800, 1000], passion: [5, 15], energy: [5, 10], social: [0, 0] } },
         { mood: "บ่นแต่ให้", text: "'โตแล้วหัดหาเงินพิเศษทำบ้างสิ...\nอะ โอนให้ครึ่งนึงพอ'", shortDesc: "พ่อบ่นแต่โอนให้", stats: { money: [500, 800], passion: [-20, -10], energy: [0, 0], social: [0, 0] } },
         { mood: "ช็อตเหมือนกัน", text: "'พ่อเพิ่งเอาเงินไปจ่ายค่าซ่อมรถหมดเลยลูก\nตอนนี้กรอบ ยืมเพื่อนไปก่อนนะ'", shortDesc: "พ่อช็อต", stats: { money: [0, 0], passion: [-15, -5], energy: [-5, 0], social: [0, 0] } }
     ],
     "พี่": [
-        { mood: "ป๋าจัด", text: "'เพิ่งเงินเดือนออกพอดี! ป๋าจัดให้ไอ้น้อง\nวันหลังมาเลี้ยงหมูกระทะกูด้วยละกัน'", shortDesc: "พี่เปย์ยับ", stats: { money: [1500, 2000], passion: [10, 20], energy: [0, 0], social: [10, 20] } },
-        { mood: "อารมณ์ดี", text: "'เออๆ รู้ว่าช็อต เอานี่ไปก่อนละกัน\nกูมีให้แค่นี้แหละ ประหยัดๆ ด้วยล่ะ'", shortDesc: "พี่แบ่งเงินให้", stats: { money: [800, 1200], passion: [5, 10], energy: [0, 0], social: [5, 15] } },
-        { mood: "บ่นแต่ให้", text: "'บ่นไรนักหนา กูก็ช็อตเหมือนกันเว้ย!\nอะ กูแบ่งให้แค่นี้พอ หาทางเอาเองละกัน'", shortDesc: "พี่ด่าแต่โอน", stats: { money: [300, 600], passion: [-10, -5], energy: [0, 0], social: [-5, 0] } },
+        { mood: "ป๋าจัด", text: "'เพิ่งเงินเดือนออกพอดี! ป๋าจัดให้ไอ้น้อง\nวันหลังมาเลี้ยงหมูกระทะกูด้วยละกัน'", shortDesc: "พี่เปย์ยับ", stats: { money: [800, 1200], passion: [10, 20], energy: [0, 0], social: [10, 20] } },
+        { mood: "อารมณ์ดี", text: "'เออๆ รู้ว่าช็อต เอานี่ไปก่อนละกัน\nกูมีให้แค่นี้แหละ ประหยัดๆ ด้วยล่ะ'", shortDesc: "พี่แบ่งเงินให้", stats: { money: [500, 800], passion: [5, 10], energy: [0, 0], social: [5, 15] } },
+        { mood: "บ่นแต่ให้", text: "'บ่นไรนักหนา กูก็ช็อตเหมือนกันเว้ย!\nอะ กูแบ่งให้แค่นี้พอ หาทางเอาเองละกัน'", shortDesc: "พี่ด่าแต่โอน", stats: { money: [300, 500], passion: [-10, -5], energy: [0, 0], social: [-5, 0] } },
         { mood: "ช็อตเหมือนกัน", text: "'โทรมาทำไม กูก็กินมาม่าอยู่เนี่ย!\nไม่มีเว้ย! แค่นี้นะเล่นเกมอยู่ อย่ากวน!'", shortDesc: "พี่ช็อต", stats: { money: [0, 0], passion: [-15, -10], energy: [-10, -5], social: [-15, -10] } }
     ]
 };
 
 const FAMILY_CALL_DB_EN = {
     "Mom": [
-        { mood: "Happy", text: "'Have you eaten, honey? Do you need anything?\nI just transferred some extra pocket money for you.\nTake care of yourself and don't skip meals!'", shortDesc: "Mom sent money", stats: { money: [1200, 2000], passion: [10, 20], energy: [5, 10], social: [0, 0] } },
+        { mood: "Happy", text: "'Have you eaten, honey? Do you need anything?\nI just transferred some extra pocket money for you.\nTake care of yourself and don't skip meals!'", shortDesc: "Mom sent money", stats: { money: [1500, 2000], passion: [10, 20], energy: [5, 10], social: [0, 0] } },
         { mood: "Caring", text: "'Out of money already? Focus on your studies,\ndon't just go out playing with friends all day.\nI sent you some money, use it wisely okay?'", shortDesc: "Mom sent money", stats: { money: [800, 1500], passion: [5, 10], energy: [0, 5], social: [0, 0] } },
-        { mood: "Complaining", text: "'You spend way too much! I just gave you some!\nI'll transfer a little, but you need to save up.\nHad to cut my own budget just for this!'", shortDesc: "Mom complained but sent money", stats: { money: [500, 1000], passion: [-15, -25], energy: [0, 0], social: [0, 0] } },
+        { mood: "Complaining", text: "'You spend way too much! I just gave you some!\nI'll transfer a little, but you need to save up.\nHad to cut my own budget just for this!'", shortDesc: "Mom complained but sent money", stats: { money: [500, 800], passion: [-15, -25], energy: [0, 0], social: [0, 0] } },
         { mood: "Broke", text: "'Oh, I'm really tight on money this month too...\nI just paid the electric bills and house expenses.\nYou'll have to endure with instant noodles.'", shortDesc: "Mom is broke", stats: { money: [0, 0], passion: [-25, -15], energy: [-10, -5], social: [0, 0] } }
     ],
     "Dad": [
-        { mood: "Spoiling", text: "'Hello! I secretly transferred you some money.\nGo buy yourself some nice snacks or a game...\nJust don't tell your mom or I'll get scolded!'", shortDesc: "Dad secretly sent money", stats: { money: [1500, 2000], passion: [20, 30], energy: [0, 0], social: [5, 10] } },
-        { mood: "Happy", text: "'How are you doing, kid? Is uni life good?\nI sent you some pocket money for the week.\nDon't forget to visit us when you're free.'", shortDesc: "Dad sent money", stats: { money: [1000, 1500], passion: [5, 15], energy: [5, 10], social: [0, 0] } },
-        { mood: "Complaining", text: "'You only call when you need money, don't you?\nYou're grown up now, learn to earn some yourself!\nFine, I'll transfer half of what you asked.'", shortDesc: "Dad complained but sent money", stats: { money: [500, 1000], passion: [-25, -15], energy: [0, 0], social: [0, 0] } },
+        { mood: "Spoiling", text: "'Hello! I secretly transferred you some money.\nGo buy yourself some nice snacks or a game...\nJust don't tell your mom or I'll get scolded!'", shortDesc: "Dad secretly sent money", stats: { money: [1000, 2000], passion: [20, 30], energy: [0, 0], social: [5, 10] } },
+        { mood: "Happy", text: "'How are you doing, kid? Is uni life good?\nI sent you some pocket money for the week.\nDon't forget to visit us when you're free.'", shortDesc: "Dad sent money", stats: { money: [800, 1000], passion: [5, 15], energy: [5, 10], social: [0, 0] } },
+        { mood: "Complaining", text: "'You only call when you need money, don't you?\nYou're grown up now, learn to earn some yourself!\nFine, I'll transfer half of what you asked.'", shortDesc: "Dad complained but sent money", stats: { money: [500, 800], passion: [-25, -15], energy: [0, 0], social: [0, 0] } },
         { mood: "Broke", text: "'I just spent everything fixing the car, kid!\nI'm completely broke right now, really sorry.\nMaybe borrow from a friend for a few days?'", shortDesc: "Dad is broke", stats: { money: [0, 0], passion: [-15, -5], energy: [-10, 0], social: [0, 0] } }
     ],
     "Sibling": [
-        { mood: "Rich", text: "'Just got my paycheck and a bonus today!\nBig bro/sis got you covered. Check your app!\nTreat me to BBQ next time you're home.'", shortDesc: "Sibling sent lots of money", stats: { money: [1500, 2000], passion: [10, 20], energy: [0, 0], social: [10, 20] } },
-        { mood: "Happy", text: "'Yeah, yeah, I know the freshman struggle.\nTake this for now, it's all I can share today.\nDon't go spending it all on Art Toys!'", shortDesc: "Sibling shared money", stats: { money: [800, 1200], passion: [5, 10], energy: [0, 0], social: [5, 15] } },
-        { mood: "Complaining", text: "'Stop calling me for money! I'm struggling too!\nFine, I'll send a tiny bit so you don't starve.\nFigure out the rest of the week yourself!'", shortDesc: "Sibling complained but sent money", stats: { money: [300, 800], passion: [-15, -5], energy: [0, 0], social: [-5, 0] } },
+        { mood: "Rich", text: "'Just got my paycheck and a bonus today!\nBig bro/sis got you covered. Check your app!\nTreat me to BBQ next time you're home.'", shortDesc: "Sibling sent lots of money", stats: { money: [800, 1200], passion: [10, 20], energy: [0, 0], social: [10, 20] } },
+        { mood: "Happy", text: "'Yeah, yeah, I know the freshman struggle.\nTake this for now, it's all I can share today.\nDon't go spending it all on Art Toys!'", shortDesc: "Sibling shared money", stats: { money: [500, 800], passion: [5, 10], energy: [0, 0], social: [5, 15] } },
+        { mood: "Complaining", text: "'Stop calling me for money! I'm struggling too!\nFine, I'll send a tiny bit so you don't starve.\nFigure out the rest of the week yourself!'", shortDesc: "Sibling complained but sent money", stats: { money: [300, 500], passion: [-15, -5], energy: [0, 0], social: [-5, 0] } },
         { mood: "Broke", text: "'Why are you calling?! I'm eating noodles too!\nNo money! Zero! I haven't even paid my rent.\nBye, I'm in the middle of an important game!'", shortDesc: "Sibling is broke", stats: { money: [0, 0], passion: [-20, -10], energy: [-15, -10], social: [-15, -10] } }
     ]
 };
