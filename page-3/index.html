@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BALANCE IT! - Customize Character</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-backdrop"></div>
+    <div id="scale-wrapper">
+        <div class="app-container">
+
+            <img class="logo-small pop-in" id="game-logo" src="../asset/logo.svg" alt="Balance It Logo">
+
+            <div class="page-wrapper pop-in" id="mainWrapper">
+
+                <h2 id="ui-title" class="section-title">แต่งตัวละครของคุณ</h2>
+
+                <div class="preview-box">
+                    <img id="preview-bg" class="layer-bg" src="../asset/BG/BG-01.svg">
+                    <img id="preview-body" class="layer-body" src="../asset/Body/BD-1.svg">
+                    <img id="preview-face" class="layer-face" src="../asset/Face/Face-1.svg">
+                    <img id="preview-hair" class="layer-hair" src="../asset/Hair/Hair-1.svg">
+                </div>
+
+                <div class="controls-row">
+                    <button id="btn-bg" class="toggle-btn" onclick="cycleItem('bg')">ฉาก 1/6</button>
+                    <button id="btn-body" class="toggle-btn" onclick="cycleItem('body')">เสื้อ 1/6</button>
+                    <button id="btn-face" class="toggle-btn" onclick="cycleItem('face')">หน้า 1/6</button>
+                    <button id="btn-hair" class="toggle-btn" onclick="cycleItem('hair')">ผม 1/6</button>
+                </div>
+
+
+
+            </div>
+            <div class="btn-container">
+                <button id="btn-confirm" class="btn">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+    <div id="loading-spinner"></div>
+
+    <script src="lang.js"></script>
+    <script src="asset-bg.js"></script>
+    <script src="asset-bd.js"></script>
+    <script src="asset-face.js"></script>
+    <script src="asset-hair.js"></script>
+    <script src="../settings.js"></script>
+    <script src="../sound-bridge.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
